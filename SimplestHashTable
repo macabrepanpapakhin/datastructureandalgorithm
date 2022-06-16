@@ -1,0 +1,20 @@
+public class SimplestHashTable {
+
+	String[] array;
+	int arraySize;
+	SimplestHashTable(int arraySize){
+		this.arraySize=arraySize;
+		array=new String[arraySize];
+	}
+	void put(int key,String values) {
+		int index=hash(key);
+		array[index]=values;
+	}
+	int hash(int key) {
+		return key % arraySize;
+	}
+	String get(int key) {
+		int index=hash(key);
+		return array[index];
+	}
+}
