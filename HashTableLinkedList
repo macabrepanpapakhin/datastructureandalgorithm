@@ -1,0 +1,62 @@
+package Default;
+
+import java.util.HashMap;
+
+public class HashTableLinkedList {
+	int arraySize;
+	Node[] array;
+	HashTableLinkedList(int arraySize){
+	  this.arraySize=arraySize;
+	  array=new Node[arraySize];
+	}
+	int hash(int key) {
+		return key%arraySize;
+	}
+	void put(Node newNode) {
+		Node nodeAlready=get(newNode.key);
+		int index=hash(newNode.key);
+		if(nodeAlready==null) {
+			Node previousNode=array[index];
+			newNode.next=previousNode;
+			array[index]=newNode;
+			
+		}else {
+			nodeAlready.values=newNode.values;
+		}
+		Node node=array[index];
+		System.out.println(node.key+" will start");
+		while(node!=null) {
+			System.out.println(node.key+" "+node.values);
+			node=node.next;
+		}
+		
+	}
+	HashMap<Integer,Integer> map=new HashMap();
+	
+	Node get(int key) {
+		int index=hash(key);
+		Node currentNode=array[index];
+		while(currentNode!=null) {
+			if(key==currentNode.key) {
+				return currentNode;
+			}
+			currentNode=currentNode.next;
+		}
+		return null;
+	}
+	
+	
+}
+
+public class Node {
+Node next;
+int key;
+String values;
+public Node(int key,String values) {
+	this.key=key;
+	this.values=values;
+	next=null;
+
+}
+
+}
