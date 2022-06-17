@@ -48,7 +48,7 @@ public class HashTableLinkedList {
 	
 }
 
-public class Node {
+class Node {
 Node next;
 int key;
 String values;
